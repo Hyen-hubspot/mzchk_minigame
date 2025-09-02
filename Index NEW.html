@@ -1,0 +1,557 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.7">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;MegazoneCloud AI Challenge - Tech Fest 2025&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&amp;display=swap" rel="stylesheet"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Inter', sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>touch-action: manipulation;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.bg-gradient {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(135deg, #1e293b, #0f172a);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.card {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: rgba(255, 255, 255, 0.05);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>backdrop-filter: blur(10px);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid rgba(255, 255, 255, 0.1);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn-primary {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.3s ease;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn-primary:hover {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(-3px);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn-option {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.2s ease;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn-option:hover {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transform: scale(1.03);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #1e293b; /* slate-800 */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.correct {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #10b981 !important; /* emerald-500 */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-color: #10b981 !important;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.incorrect {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #ef4444 !important; /* red-500 */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-color: #ef4444 !important;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.admin-table th, .admin-table td {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 12px 15px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: left;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.admin-table tbody tr {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-bottom: 1px solid rgba(255, 255, 255, 0.1);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.admin-table tbody tr:last-child {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-bottom: none;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.vip-record td {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: rgba(250, 204, 21, 0.1); /* amber-400 with opacity */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #facc15; /* amber-400 */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body class="bg-gray-900 text-white flex items-center justify-center min-h-screen p-4"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="game-container" class="w-full max-w-lg mx-auto"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Welcome Screen --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="welcome-screen" class="text-center p-6 md:p-8 rounded-2xl card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="mx-auto mb-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;h1 class="text-4xl md:text-5xl font-black tracking-tight"&gt;MEGAZONECLOUD&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2 class="text-2xl md:text-4xl font-bold text-sky-300 mb-2"&gt;Minigame to Win a Prize!&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="text-base md:text-lg text-gray-400 mb-6"&gt;Tech Fest 2025&lt;/p&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="player-form" class="max-w-md mx-auto mb-6 text-left space-y-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;input type="text" id="player-name" placeholder="Your Name" class="w-full p-3 bg-gray-800 border-2 border-gray-700 rounded-lg focus:outline-none focus:border-sky-400" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;input type="email" id="player-email" placeholder="Your Email" class="w-full p-3 bg-gray-800 border-2 border-gray-700 rounded-lg focus:outline-none focus:border-sky-400" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;input type="tel" id="player-phone" placeholder="Phone Number" class="w-full p-3 bg-gray-800 border-2 border-gray-700 rounded-lg focus:outline-none focus:border-sky-400" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;input type="text" id="player-company" placeholder="Company Name" class="w-full p-3 bg-gray-800 border-2 border-gray-700 rounded-lg focus:outline-none focus:border-sky-400" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p id="form-error" class="text-red-400 text-sm hidden"&gt;Please fill out all fields.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="space-y-6 text-left max-w-md mx-auto bg-slate-800/50 p-6 rounded-lg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-2xl font-bold text-center mb-4"&gt;Game Prize&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="flex items-center space-x-4 p-4 bg-green-500/10 rounded-lg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="text-4xl"&gt;🏆&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3 class="text-xl font-bold text-emerald-400"&gt;WIN THE GRAND PRIZE&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-emerald-100"&gt;Score 3 or more to win a &lt;strong class="font-extrabold"&gt;Portable Power Bank!&lt;/strong&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button id="start-btn" class="mt-8 btn-primary bg-gradient text-white font-bold py-4 px-12 rounded-full text-xl uppercase tracking-wider"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>Start Challenge</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>&lt;button id="admin-btn" class="text-sm text-gray-500 mt-6 hover:text-white transition-colors"&gt;Admin Panel&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Game Screen --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="game-screen" class="hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="p-6 md:p-8 rounded-2xl card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="flex justify-between items-center mb-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="text-lg font-semibold"&gt;Question &lt;span id="question-number"&gt;1&lt;/span&gt; of 5&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="text-lg font-bold"&gt;Score: &lt;span id="score"&gt;0&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 id="question-text" class="text-xl md:text-3xl font-bold mb-8 min-h-[100px]"&gt;&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="options-container" class="grid grid-cols-1 md:grid-cols-2 gap-4"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="text-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button id="next-question-btn" class="hidden mt-8 btn-primary bg-sky-600 text-white font-bold py-3 px-10 rounded-full text-lg"&gt;Next&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- End Screen --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="end-screen" class="hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="text-center p-6 md:p-8 rounded-2xl card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;p class="text-2xl mb-4"&gt;Your Final Score: &lt;span id="final-score" class="font-bold"&gt;&lt;/span&gt;&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Win Message --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="win-result" class="hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>&lt;h2 class="text-4xl font-black text-emerald-400 mb-4"&gt;Congratulations!&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>&lt;p class="text-lg md:text-xl text-gray-200 mt-4 max-w-md mx-auto"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>You're 1 step closer to the Prize! Please follow us on Linkedin and show our staff to win the prize!</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Lose Message --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="lose-result" class="hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h2 class="text-4xl font-black text-amber-400 mb-4"&gt;Not quite there!&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-lg md:text-xl text-gray-200 mt-4 max-w-md mx-auto"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>Great effort! Chat with our team at the booth to get some hints and try again for the prize!</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button id="restart-btn" class="mt-8 btn-primary bg-gradient text-white font-bold py-4 px-12 rounded-full text-xl uppercase tracking-wider"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>Play Again</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Admin Login Screen --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="admin-login-screen" class="hidden p-8 rounded-2xl card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2 class="text-3xl font-bold mb-6"&gt;Admin Access&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;input type="password" id="admin-password" placeholder="Enter Password" class="w-full max-w-xs mx-auto p-3 bg-gray-800 border-2 border-gray-700 rounded-lg focus:outline-none focus:border-sky-400 mb-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p id="password-error" class="text-red-400 text-sm mb-4 hidden"&gt;Incorrect Password.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button id="login-btn" class="btn-primary bg-sky-600 text-white font-bold py-2 px-6 rounded-lg"&gt;Login&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;hr class="my-8 border-gray-600"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3 class="text-2xl font-bold mb-4"&gt;VIP Prize Award&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>&lt;div class="max-w-md mx-auto text-left space-y-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;input type="text" id="vip-name" placeholder="VIP Name" class="w-full p-3 bg-gray-800 border-2 border-gray-700 rounded-lg focus:outline-none focus:border-sky-400"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;input type="email" id="vip-email" placeholder="VIP Email" class="w-full p-3 bg-gray-800 border-2 border-gray-700 rounded-lg focus:outline-none focus:border-sky-400"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;input type="tel" id="vip-phone" placeholder="VIP Phone Number" class="w-full p-3 bg-gray-800 border-2 border-gray-700 rounded-lg focus:outline-none focus:border-sky-400"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;input type="text" id="vip-company" placeholder="VIP Company" class="w-full p-3 bg-gray-800 border-2 border-gray-700 rounded-lg focus:outline-none focus:border-sky-400"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;select id="vip-prize" class="w-full p-3 bg-gray-800 border-2 border-gray-700 rounded-lg focus:outline-none focus:border-sky-400"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;option value="Portable Power Bank"&gt;Portable Power Bank&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;option value="Canvas Bag"&gt;Canvas Bag&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p id="vip-form-error" class="text-red-400 text-sm hidden"&gt;Please fill out all VIP fields.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button id="award-vip-prize-btn" class="w-full btn-primary bg-amber-500 text-black font-bold py-3 rounded-lg"&gt;Award VIP Prize&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button id="back-to-welcome-btn" class="mt-8 bg-gray-600 text-white font-bold py-2 px-6 rounded-lg"&gt;Back to Welcome&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Admin History Screen --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="admin-history-screen" class="hidden p-8 rounded-2xl card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>&lt;div class="flex justify-between items-center mb-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-3xl font-bold"&gt;Game History&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="flex items-center space-x-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>&lt;button id="export-csv-btn" class="bg-emerald-600 text-white font-bold py-2 px-4 rounded-lg"&gt;Export to CSV&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>&lt;button id="clear-history-btn" class="bg-red-600 text-white font-bold py-2 px-4 rounded-lg"&gt;Clear All Data&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>&lt;button id="admin-back-btn" class="bg-gray-600 text-white font-bold py-2 px-4 rounded-lg"&gt;Back to Welcome&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="overflow-auto max-h-[60vh] bg-gray-800/50 rounded-lg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;table class="w-full text-sm text-left text-gray-300 admin-table"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;thead class="text-xs text-white uppercase bg-gray-700/50"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;th&gt;Name&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;th&gt;Email&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;th&gt;Phone&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;th&gt;Company&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;th&gt;Score / Status&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;th&gt;Prize&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/thead&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;tbody id="history-table-body"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;!-- History data will be injected here --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/tbody&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/table&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Confirmation Modal --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="confirm-modal" class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="bg-gray-800 rounded-lg p-8 max-w-sm text-center card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p id="confirm-message" class="text-lg mb-6"&gt;Are you sure?&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button id="confirm-yes-btn" class="bg-red-600 text-white font-bold py-2 px-6 rounded-lg"&gt;Yes&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button id="confirm-no-btn" class="bg-gray-600 text-white font-bold py-2 px-6 rounded-lg ml-4"&gt;No&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>// --- DOM Element Selection ---</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const welcomeScreen = document.getElementById('welcome-screen');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const gameScreen = document.getElementById('game-screen');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const endScreen = document.getElementById('end-screen');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const adminLoginScreen = document.getElementById('admin-login-screen');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const adminHistoryScreen = document.getElementById('admin-history-screen');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const confirmModal = document.getElementById('confirm-modal');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const startBtn = document.getElementById('start-btn');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const restartBtn = document.getElementById('restart-btn');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const adminBtn = document.getElementById('admin-btn');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const loginBtn = document.getElementById('login-btn');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const backToWelcomeBtn = document.getElementById('back-to-welcome-btn');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const adminBackBtn = document.getElementById('admin-back-btn');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const clearHistoryBtn = document.getElementById('clear-history-btn');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const exportCsvBtn = document.getElementById('export-csv-btn');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const confirmYesBtn = document.getElementById('confirm-yes-btn');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const confirmNoBtn = document.getElementById('confirm-no-btn');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const playerNameInput = document.getElementById('player-name');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const playerEmailInput = document.getElementById('player-email');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const playerPhoneInput = document.getElementById('player-phone');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const playerCompanyInput = document.getElementById('player-company');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const formError = document.getElementById('form-error');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const adminPasswordInput = document.getElementById('admin-password');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const passwordError = document.getElementById('password-error');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const historyTableBody = document.getElementById('history-table-body');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const questionNumberEl = document.getElementById('question-number');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const scoreEl = document.getElementById('score');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const questionTextEl = document.getElementById('question-text');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const optionsContainer = document.getElementById('options-container');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const nextQuestionBtn = document.getElementById('next-question-btn');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const finalScoreEl = document.getElementById('final-score');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const winResult = document.getElementById('win-result');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const loseResult = document.getElementById('lose-result');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const confirmMessage = document.getElementById('confirm-message');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const vipNameInput = document.getElementById('vip-name');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const vipEmailInput = document.getElementById('vip-email');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const vipPhoneInput = document.getElementById('vip-phone');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const vipCompanyInput = document.getElementById('vip-company');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const vipPrizeSelect = document.getElementById('vip-prize');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const awardVipPrizeBtn = document.getElementById('award-vip-prize-btn');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const vipFormError = document.getElementById('vip-form-error');</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// --- Game State &amp; Config ---</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let questions = [];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let currentQuestionIndex = 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let score = 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let currentPlayer = {};</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let confirmCallback = null;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const WIN_THRESHOLD = 3;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const TOTAL_QUESTIONS = 5;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// --- Event Listeners ---</p>
+<p class="p1"><span class="Apple-converted-space">        </span>startBtn.addEventListener('click', startGame);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>restartBtn.addEventListener('click', showWelcomeScreen);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>adminBtn.addEventListener('click', showAdminLogin);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>loginBtn.addEventListener('click', handleAdminLogin);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>backToWelcomeBtn.addEventListener('click', showWelcomeScreen);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>adminBackBtn.addEventListener('click', showWelcomeScreen);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>nextQuestionBtn.addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">             </span>currentQuestionIndex++;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>showNextQuestion();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>clearHistoryBtn.addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">             </span>showConfirm("Are you sure you want to delete all game history? This cannot be undone.", () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>localStorage.removeItem('megazoneGameHistory');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>displayAdminHistory();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>exportCsvBtn.addEventListener('click', exportToCsv);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>confirmYesBtn.addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (confirmCallback) confirmCallback();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>confirmModal.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>confirmNoBtn.addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>confirmCallback = null;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>confirmModal.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>awardVipPrizeBtn.addEventListener('click', awardVipPrize);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// --- Screen Navigation ---</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function showWelcomeScreen() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gameScreen.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>endScreen.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>adminLoginScreen.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>adminHistoryScreen.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>welcomeScreen.classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>playerNameInput.value = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>playerEmailInput.value = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>playerPhoneInput.value = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>playerCompanyInput.value = '';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function showAdminLogin() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>welcomeScreen.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>adminLoginScreen.classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>passwordError.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>adminPasswordInput.value = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>vipFormError.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>vipNameInput.value = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>vipEmailInput.value = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>vipPhoneInput.value = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>vipCompanyInput.value = '';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// --- Admin &amp; Data Logic ---</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function handleAdminLogin() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (adminPasswordInput.value === 'megazone') {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>displayAdminHistory();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>passwordError.classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function displayAdminHistory() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>adminLoginScreen.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>adminHistoryScreen.classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const history = JSON.parse(localStorage.getItem('megazoneGameHistory')) || [];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>historyTableBody.innerHTML = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (history.length === 0) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>historyTableBody.innerHTML = '&lt;tr&gt;&lt;td colspan="6" class="text-center p-8"&gt;No game history found.&lt;/td&gt;&lt;/tr&gt;';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>history.forEach(player =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const row = document.createElement('tr');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (player.status === 'VIP') {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>row.classList.add('vip-record');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>row.innerHTML = `&lt;td&gt;${player.name}&lt;/td&gt;&lt;td&gt;${player.email}&lt;/td&gt;&lt;td&gt;${player.phone || ''}&lt;/td&gt;&lt;td&gt;${player.company}&lt;/td&gt;&lt;td&gt;${player.status === 'VIP' ? '⭐ VIP' : `${player.score} / ${TOTAL_QUESTIONS}`}&lt;/td&gt;&lt;td&gt;${player.prize}&lt;/td&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>historyTableBody.appendChild(row);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function showConfirm(message, callback) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>confirmMessage.textContent = message;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>confirmCallback = callback;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>confirmModal.classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function saveGameResult(data) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const history = JSON.parse(localStorage.getItem('megazoneGameHistory')) || [];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>history.push(data);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>localStorage.setItem('megazoneGameHistory', JSON.stringify(history));</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function awardVipPrize() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const name = vipNameInput.value.trim();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const email = vipEmailInput.value.trim();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const phone = vipPhoneInput.value.trim();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const company = vipCompanyInput.value.trim();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const prize = vipPrizeSelect.value;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (!name || !email || !company || !phone) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>vipFormError.classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>vipFormError.classList.add('hidden');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>saveGameResult({</p>
+<p class="p1"><span class="Apple-converted-space">                </span>name, email, phone, company, prize, status: 'VIP'</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>alert(`VIP prize for ${name} has been recorded!`);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>vipNameInput.value = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>vipEmailInput.value = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>vipPhoneInput.value = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>vipCompanyInput.value = '';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function exportToCsv() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const history = JSON.parse(localStorage.getItem('megazoneGameHistory')) || [];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (history.length === 0) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>alert("No history to export.");</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const headers = ['Name', 'Email', 'Phone', 'Company', 'Score/Status', 'Prize'];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const sanitize = (value) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (value === undefined || value === null) return '';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>let str = String(value);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (str.search(/("|,|\n)/g) &gt;= 0) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>str = '"' + str.replace(/"/g, '""') + '"';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return str;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const csvRows = [headers.join(',')];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>history.forEach(player =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const scoreStatus = player.status === 'VIP' ? 'VIP' : `${player.score}/${TOTAL_QUESTIONS}`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const row = [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>sanitize(player.name),</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>sanitize(player.email),</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>sanitize(player.phone || ''),</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>sanitize(player.company),</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>scoreStatus,</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>sanitize(player.prize)</p>
+<p class="p1"><span class="Apple-converted-space">                </span>];</p>
+<p class="p1"><span class="Apple-converted-space">                </span>csvRows.push(row.join(','));</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const csvString = csvRows.join('\n');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const blob = new Blob([csvString], { type: 'text/csv;charset=utf-8;' });</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const link = document.createElement("a");</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (link.download !== undefined) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const url = URL.createObjectURL(blob);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>link.setAttribute("href", url);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>link.setAttribute("download", "megazone_game_history.csv");</p>
+<p class="p1"><span class="Apple-converted-space">                </span>link.style.visibility = 'hidden';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.body.appendChild(link);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>link.click();</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.body.removeChild(link);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// --- Question Data ---</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function getFixedQuestions() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>return [</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>"question": "What does Megazone AIR do beyond AI readiness?",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>"options": ["Only assists in setting up hardware", "Creates a core capability for sustainable AI innovation", "Focuses on marketing only", "Develops mobile applications"],</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>"answer": "Creates a core capability for sustainable AI innovation"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>"question": "How does Megazone AIR support AI Native transformation?",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>"options": ["By forcing manual data entry", "Acting as a practical partner from vision to execution", "Offering only short-term trials", "Limiting AI to a single department"],</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>"answer": "Acting as a practical partner from vision to execution"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>"question": "What ensures trustworthiness of AI-generated answers in AIR Studio?",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>"options": ["Random guessing", "Showing data source references and managing RAG", "Relying on user opinions", "No verification methods"],</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>"answer": "Showing data source references and managing RAG"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>"question": "What is a current trend in generative AI?",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>"options": ["Using AI to generate creative content and automate workflows", "Avoiding AI in creative industries", "Only using AI for data storage", "Restricting AI to small datasets"],</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>"answer": "Using AI to generate creative content and automate workflows"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>"question": "What is AWS’s service for natural language processing and AI chatbots?",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>"options": ["Amazon Polly", "Amazon Lex", "Amazon Aurora", "AWS Elastic Beanstalk"],</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>"answer": "Amazon Lex"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// --- Game Logic ---</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function startGame() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const name = playerNameInput.value.trim();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const email = playerEmailInput.value.trim();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const phone = playerPhoneInput.value.trim();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const company = playerCompanyInput.value.trim();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (!name || !email || !company || !phone) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>formError.classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>formError.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>currentPlayer = { name, email, phone, company };</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>questions = getFixedQuestions();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>currentQuestionIndex = 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>score = 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>scoreEl.textContent = score;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>welcomeScreen.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gameScreen.classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>endScreen.classList.add('hidden');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>showNextQuestion();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function showNextQuestion() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (currentQuestionIndex &gt;= TOTAL_QUESTIONS) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>endGame();</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>resetQuestionUI();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const question = questions[currentQuestionIndex];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>questionNumberEl.textContent = currentQuestionIndex + 1;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>questionTextEl.textContent = question.question;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const shuffledOptions = [...question.options].sort(() =&gt; Math.random() - 0.5);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>shuffledOptions.forEach(option =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const button = document.createElement('button');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>button.textContent = option;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>button.classList.add('btn-option', 'w-full', 'p-4', 'text-lg', 'font-semibold', 'text-left', 'bg-gray-800', 'rounded-lg', 'border-2', 'border-gray-700', 'hover:bg-slate-800');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>button.addEventListener('click', () =&gt; selectAnswer(button, option, question.answer));</p>
+<p class="p1"><span class="Apple-converted-space">                </span>optionsContainer.appendChild(button);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function selectAnswer(button, selectedOption, correctAnswer) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>disableOptions();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>nextQuestionBtn.classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (selectedOption === correctAnswer) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>score++;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>scoreEl.textContent = score;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>button.classList.add('correct');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>button.classList.add('incorrect');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const correctButton = Array.from(optionsContainer.children).find(btn =&gt; btn.textContent === correctAnswer);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (correctButton) correctButton.classList.add('correct');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function endGame() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gameScreen.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>endScreen.classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>finalScoreEl.textContent = `${score} / ${TOTAL_QUESTIONS}`;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>let prize;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (score &gt;= WIN_THRESHOLD) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>winResult.classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>loseResult.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>prize = 'Portable Power Bank';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>winResult.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>loseResult.classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>prize = 'Participation (Retry Suggested)';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>saveGameResult({ ...currentPlayer, score, prize, status: 'Player' });</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// --- UI Helper Functions ---</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function resetQuestionUI() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>optionsContainer.innerHTML = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>nextQuestionBtn.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function disableOptions() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>Array.from(optionsContainer.children).forEach(button =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>button.disabled = true;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>button.style.cursor = 'not-allowed';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+<p class="p2"><br></p>
+</body>
+</html>
