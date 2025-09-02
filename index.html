@@ -1,528 +1,1080 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>MegazoneCloud AI Challenge - Tech Fest 2025</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+
     <style>
+
         body {
+
             font-family: 'Inter', sans-serif;
+
             touch-action: manipulation;
+
         }
+
         .bg-gradient {
+
             background: linear-gradient(135deg, #1e293b, #0f172a);
+
         }
+
         .card {
+
             background-color: rgba(255, 255, 255, 0.05);
+
             backdrop-filter: blur(10px);
+
             border: 1px solid rgba(255, 255, 255, 0.1);
+
         }
+
         .btn-primary {
+
             transition: all 0.3s ease;
+
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+
         }
+
         .btn-primary:hover {
+
             transform: translateY(-3px);
+
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+
         }
+
         .btn-option {
+
             transition: all 0.2s ease;
+
         }
+
         .btn-option:hover {
+
             transform: scale(1.03);
+
             background-color: #1e293b; /* slate-800 */
+
         }
+
         .correct {
+
             background-color: #10b981 !important; /* emerald-500 */
+
             border-color: #10b981 !important;
+
         }
+
         .incorrect {
+
             background-color: #ef4444 !important; /* red-500 */
+
             border-color: #ef4444 !important;
+
         }
+
         .admin-table th, .admin-table td {
+
             padding: 12px 15px;
+
             text-align: left;
+
         }
+
         .admin-table tbody tr {
+
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
         }
+
         .admin-table tbody tr:last-child {
+
             border-bottom: none;
+
         }
+
         .vip-record td {
+
             background-color: rgba(250, 204, 21, 0.1); /* amber-400 with opacity */
+
             color: #facc15; /* amber-400 */
+
         }
+
     </style>
+
 </head>
+
 <body class="bg-gray-900 text-white flex items-center justify-center min-h-screen p-4">
 
-    <div id="game-container" class="w-full max-w-3xl mx-auto">
+
+
+    <div id="game-container" class="w-full max-w-lg mx-auto">
+
+
 
         <!-- Welcome Screen -->
-        <div id="welcome-screen" class="text-center p-8 rounded-2xl card">
+
+        <div id="welcome-screen" class="text-center p-6 md:p-8 rounded-2xl card">
+
             <div class="mx-auto mb-4">
-                 <h1 class="text-5xl font-black tracking-wider">MEGAZONECLOUD</h1>
+
+                 <h1 class="text-4xl md:text-5xl font-black tracking-tight">MEGAZONECLOUD</h1>
+
             </div>
-            <h2 class="text-4xl font-bold text-sky-300 mb-2">Minigame to Win a Prize!</h2>
-            <p class="text-lg text-gray-400 mb-8">Tech Fest 2025</p>
+
+            <h2 class="text-2xl md:text-4xl font-bold text-sky-300 mb-2">Minigame to Win a Prize!</h2>
+
+            <p class="text-base md:text-lg text-gray-400 mb-6">Tech Fest 2025</p>
+
             
-            <!-- Player Info Form -->
+
             <div id="player-form" class="max-w-md mx-auto mb-6 text-left space-y-4">
+
                 <input type="text" id="player-name" placeholder="Your Name" class="w-full p-3 bg-gray-800 border-2 border-gray-700 rounded-lg focus:outline-none focus:border-sky-400" required>
+
                 <input type="email" id="player-email" placeholder="Your Email" class="w-full p-3 bg-gray-800 border-2 border-gray-700 rounded-lg focus:outline-none focus:border-sky-400" required>
+
+                <input type="tel" id="player-phone" placeholder="Phone Number" class="w-full p-3 bg-gray-800 border-2 border-gray-700 rounded-lg focus:outline-none focus:border-sky-400" required>
+
                 <input type="text" id="player-company" placeholder="Company Name" class="w-full p-3 bg-gray-800 border-2 border-gray-700 rounded-lg focus:outline-none focus:border-sky-400" required>
-                 <p id="form-error" class="text-red-400 text-sm hidden">Please fill out all fields.</p>
+
+                <p id="form-error" class="text-red-400 text-sm hidden">Please fill out all fields.</p>
+
             </div>
+
             
+
             <div class="space-y-6 text-left max-w-md mx-auto bg-slate-800/50 p-6 rounded-lg">
-                <h2 class="text-2xl font-bold text-center mb-4">Game Prizes</h2>
+
+                <h2 class="text-2xl font-bold text-center mb-4">Game Prize</h2>
+
                 <div class="flex items-center space-x-4 p-4 bg-green-500/10 rounded-lg">
+
                     <div class="text-4xl">🏆</div>
+
                     <div>
-                        <h3 class="text-xl font-bold text-emerald-400">WIN THE GAME</h3>
+
+                        <h3 class="text-xl font-bold text-emerald-400">WIN THE GRAND PRIZE</h3>
+
                         <p class="text-emerald-100">Score 3 or more to win a <strong class="font-extrabold">Portable Power Bank!</strong></p>
+
                     </div>
+
                 </div>
-                <div class="flex items-center space-x-4 p-4 bg-yellow-500/10 rounded-lg">
-                    <div class="text-4xl">🎁</div>
-                    <div>
-                        <h3 class="text-xl font-bold text-amber-400">PLAY THE GAME</h3>
-                        <p class="text-amber-100">Everyone who plays gets a <strong class="font-extrabold">Canvas Bag!</strong></p>
-                    </div>
-                </div>
+
             </div>
+
+
 
             <button id="start-btn" class="mt-8 btn-primary bg-gradient text-white font-bold py-4 px-12 rounded-full text-xl uppercase tracking-wider">
+
                 Start Challenge
+
             </button>
+
              <button id="admin-btn" class="text-sm text-gray-500 mt-6 hover:text-white transition-colors">Admin Panel</button>
+
         </div>
+
+
 
         <!-- Game Screen -->
+
         <div id="game-screen" class="hidden">
-            <div class="p-8 rounded-2xl card">
+
+            <div class="p-6 md:p-8 rounded-2xl card">
+
                 <div class="flex justify-between items-center mb-4">
+
                     <div class="text-lg font-semibold">Question <span id="question-number">1</span> of 5</div>
+
                     <div class="text-lg font-bold">Score: <span id="score">0</span></div>
+
                 </div>
-                <h2 id="question-text" class="text-2xl md:text-3xl font-bold mb-8 min-h-[100px]"></h2>
+
+                <h2 id="question-text" class="text-xl md:text-3xl font-bold mb-8 min-h-[100px]"></h2>
+
                 <div id="options-container" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+
                 <div class="text-center">
+
                     <button id="next-question-btn" class="hidden mt-8 btn-primary bg-sky-600 text-white font-bold py-3 px-10 rounded-full text-lg">Next</button>
+
                 </div>
+
             </div>
+
         </div>
+
+
 
         <!-- End Screen -->
+
         <div id="end-screen" class="hidden">
-            <div class="text-center p-8 rounded-2xl card">
-                <h2 id="end-title" class="text-5xl font-black mb-4"></h2>
-                <p class="text-2xl mb-2">Your Final Score: <span id="final-score" class="font-bold"></span></p>
-                <div class="bg-gray-800 p-6 rounded-lg max-w-md mx-auto">
-                    <h3 class="text-2xl font-bold mb-2">Show this screen to claim your prize!</h3>
-                    <p id="prize-text" class="text-3xl font-extrabold"></p>
+
+            <div class="text-center p-6 md:p-8 rounded-2xl card">
+
+                 <p class="text-2xl mb-4">Your Final Score: <span id="final-score" class="font-bold"></span></p>
+
+
+
+                <!-- Win Message -->
+
+                <div id="win-result" class="hidden">
+
+                     <h2 class="text-4xl font-black text-emerald-400 mb-4">Congratulations!</h2>
+
+                     <p class="text-lg md:text-xl text-gray-200 mt-4 max-w-md mx-auto">
+
+                        You're 1 step closer to the Prize! Please follow us on Linkedin and show our staff to win the prize!
+
+                    </p>
+
                 </div>
+
+
+
+                <!-- Lose Message -->
+
+                <div id="lose-result" class="hidden">
+
+                    <h2 class="text-4xl font-black text-amber-400 mb-4">Not quite there!</h2>
+
+                    <p class="text-lg md:text-xl text-gray-200 mt-4 max-w-md mx-auto">
+
+                        Great effort! Chat with our team at the booth to get some hints and try again for the prize!
+
+                    </p>
+
+                </div>
+
+
+
                 <button id="restart-btn" class="mt-8 btn-primary bg-gradient text-white font-bold py-4 px-12 rounded-full text-xl uppercase tracking-wider">
+
                     Play Again
+
                 </button>
+
             </div>
+
         </div>
+
         
+
         <!-- Admin Login Screen -->
+
         <div id="admin-login-screen" class="hidden p-8 rounded-2xl card">
+
             <h2 class="text-3xl font-bold mb-6">Admin Access</h2>
+
             <input type="password" id="admin-password" placeholder="Enter Password" class="w-full max-w-xs mx-auto p-3 bg-gray-800 border-2 border-gray-700 rounded-lg focus:outline-none focus:border-sky-400 mb-4">
+
             <p id="password-error" class="text-red-400 text-sm mb-4 hidden">Incorrect Password.</p>
+
             <button id="login-btn" class="btn-primary bg-sky-600 text-white font-bold py-2 px-6 rounded-lg">Login</button>
+
             <hr class="my-8 border-gray-600">
+
             <h3 class="text-2xl font-bold mb-4">VIP Prize Award</h3>
+
              <div class="max-w-md mx-auto text-left space-y-4">
+
                 <input type="text" id="vip-name" placeholder="VIP Name" class="w-full p-3 bg-gray-800 border-2 border-gray-700 rounded-lg focus:outline-none focus:border-sky-400">
+
                 <input type="email" id="vip-email" placeholder="VIP Email" class="w-full p-3 bg-gray-800 border-2 border-gray-700 rounded-lg focus:outline-none focus:border-sky-400">
+
+                <input type="tel" id="vip-phone" placeholder="VIP Phone Number" class="w-full p-3 bg-gray-800 border-2 border-gray-700 rounded-lg focus:outline-none focus:border-sky-400">
+
                 <input type="text" id="vip-company" placeholder="VIP Company" class="w-full p-3 bg-gray-800 border-2 border-gray-700 rounded-lg focus:outline-none focus:border-sky-400">
+
                 <select id="vip-prize" class="w-full p-3 bg-gray-800 border-2 border-gray-700 rounded-lg focus:outline-none focus:border-sky-400">
+
                     <option value="Portable Power Bank">Portable Power Bank</option>
+
                     <option value="Canvas Bag">Canvas Bag</option>
+
                 </select>
+
                 <p id="vip-form-error" class="text-red-400 text-sm hidden">Please fill out all VIP fields.</p>
+
                 <button id="award-vip-prize-btn" class="w-full btn-primary bg-amber-500 text-black font-bold py-3 rounded-lg">Award VIP Prize</button>
+
             </div>
+
             <button id="back-to-welcome-btn" class="mt-8 bg-gray-600 text-white font-bold py-2 px-6 rounded-lg">Back to Welcome</button>
+
         </div>
+
         
+
         <!-- Admin History Screen -->
+
         <div id="admin-history-screen" class="hidden p-8 rounded-2xl card">
+
              <div class="flex justify-between items-center mb-6">
+
                 <h2 class="text-3xl font-bold">Game History</h2>
+
                 <div class="flex items-center space-x-2">
+
                      <button id="export-csv-btn" class="bg-emerald-600 text-white font-bold py-2 px-4 rounded-lg">Export to CSV</button>
+
                      <button id="clear-history-btn" class="bg-red-600 text-white font-bold py-2 px-4 rounded-lg">Clear All Data</button>
+
                      <button id="admin-back-btn" class="bg-gray-600 text-white font-bold py-2 px-4 rounded-lg">Back to Welcome</button>
+
                 </div>
+
             </div>
+
             <div class="overflow-auto max-h-[60vh] bg-gray-800/50 rounded-lg">
+
                 <table class="w-full text-sm text-left text-gray-300 admin-table">
+
                     <thead class="text-xs text-white uppercase bg-gray-700/50">
+
                         <tr>
+
                             <th>Name</th>
+
                             <th>Email</th>
+
+                            <th>Phone</th>
+
                             <th>Company</th>
+
                             <th>Score / Status</th>
+
                             <th>Prize</th>
+
                         </tr>
+
                     </thead>
+
                     <tbody id="history-table-body">
+
                         <!-- History data will be injected here -->
+
                     </tbody>
+
                 </table>
+
             </div>
+
         </div>
+
     </div>
+
     
+
     <!-- Confirmation Modal -->
+
     <div id="confirm-modal" class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
+
         <div class="bg-gray-800 rounded-lg p-8 max-w-sm text-center card">
+
             <p id="confirm-message" class="text-lg mb-6">Are you sure?</p>
+
             <button id="confirm-yes-btn" class="bg-red-600 text-white font-bold py-2 px-6 rounded-lg">Yes</button>
+
             <button id="confirm-no-btn" class="bg-gray-600 text-white font-bold py-2 px-6 rounded-lg ml-4">No</button>
+
         </div>
+
     </div>
+
+
 
     <script>
+
         // --- DOM Element Selection ---
+
         const welcomeScreen = document.getElementById('welcome-screen');
+
         const gameScreen = document.getElementById('game-screen');
+
         const endScreen = document.getElementById('end-screen');
+
         const adminLoginScreen = document.getElementById('admin-login-screen');
+
         const adminHistoryScreen = document.getElementById('admin-history-screen');
+
         const confirmModal = document.getElementById('confirm-modal');
+
         const startBtn = document.getElementById('start-btn');
+
         const restartBtn = document.getElementById('restart-btn');
+
         const adminBtn = document.getElementById('admin-btn');
+
         const loginBtn = document.getElementById('login-btn');
+
         const backToWelcomeBtn = document.getElementById('back-to-welcome-btn');
+
         const adminBackBtn = document.getElementById('admin-back-btn');
+
         const clearHistoryBtn = document.getElementById('clear-history-btn');
+
         const exportCsvBtn = document.getElementById('export-csv-btn');
+
         const confirmYesBtn = document.getElementById('confirm-yes-btn');
+
         const confirmNoBtn = document.getElementById('confirm-no-btn');
+
         const playerNameInput = document.getElementById('player-name');
+
         const playerEmailInput = document.getElementById('player-email');
+
+        const playerPhoneInput = document.getElementById('player-phone');
+
         const playerCompanyInput = document.getElementById('player-company');
+
         const formError = document.getElementById('form-error');
+
         const adminPasswordInput = document.getElementById('admin-password');
+
         const passwordError = document.getElementById('password-error');
+
         const historyTableBody = document.getElementById('history-table-body');
+
         const questionNumberEl = document.getElementById('question-number');
+
         const scoreEl = document.getElementById('score');
+
         const questionTextEl = document.getElementById('question-text');
+
         const optionsContainer = document.getElementById('options-container');
+
         const nextQuestionBtn = document.getElementById('next-question-btn');
-        const endTitle = document.getElementById('end-title');
+
         const finalScoreEl = document.getElementById('final-score');
-        const prizeText = document.getElementById('prize-text');
+
+        const winResult = document.getElementById('win-result');
+
+        const loseResult = document.getElementById('lose-result');
+
         const confirmMessage = document.getElementById('confirm-message');
+
         const vipNameInput = document.getElementById('vip-name');
+
         const vipEmailInput = document.getElementById('vip-email');
+
+        const vipPhoneInput = document.getElementById('vip-phone');
+
         const vipCompanyInput = document.getElementById('vip-company');
+
         const vipPrizeSelect = document.getElementById('vip-prize');
+
         const awardVipPrizeBtn = document.getElementById('award-vip-prize-btn');
+
         const vipFormError = document.getElementById('vip-form-error');
+
         
+
         // --- Game State & Config ---
+
         let questions = [];
+
         let currentQuestionIndex = 0;
+
         let score = 0;
+
         let currentPlayer = {};
+
         let confirmCallback = null;
+
         const WIN_THRESHOLD = 3;
+
         const TOTAL_QUESTIONS = 5;
 
+
+
         // --- Event Listeners ---
+
         startBtn.addEventListener('click', startGame);
+
         restartBtn.addEventListener('click', showWelcomeScreen);
+
         adminBtn.addEventListener('click', showAdminLogin);
+
         loginBtn.addEventListener('click', handleAdminLogin);
+
         backToWelcomeBtn.addEventListener('click', showWelcomeScreen);
+
         adminBackBtn.addEventListener('click', showWelcomeScreen);
+
         nextQuestionBtn.addEventListener('click', () => {
+
              currentQuestionIndex++;
+
              showNextQuestion();
+
         });
+
         clearHistoryBtn.addEventListener('click', () => {
+
              showConfirm("Are you sure you want to delete all game history? This cannot be undone.", () => {
+
                 localStorage.removeItem('megazoneGameHistory');
+
                 displayAdminHistory();
+
             });
+
         });
+
         exportCsvBtn.addEventListener('click', exportToCsv);
+
         confirmYesBtn.addEventListener('click', () => {
+
             if (confirmCallback) confirmCallback();
+
             confirmModal.classList.add('hidden');
+
         });
+
         confirmNoBtn.addEventListener('click', () => {
+
             confirmCallback = null;
+
             confirmModal.classList.add('hidden');
+
         });
+
         awardVipPrizeBtn.addEventListener('click', awardVipPrize);
 
+
+
         // --- Screen Navigation ---
+
         function showWelcomeScreen() {
+
             gameScreen.classList.add('hidden');
+
             endScreen.classList.add('hidden');
+
             adminLoginScreen.classList.add('hidden');
+
             adminHistoryScreen.classList.add('hidden');
+
             welcomeScreen.classList.remove('hidden');
+
             playerNameInput.value = '';
+
             playerEmailInput.value = '';
+
+            playerPhoneInput.value = '';
+
             playerCompanyInput.value = '';
+
         }
+
         
+
         function showAdminLogin() {
+
             welcomeScreen.classList.add('hidden');
+
             adminLoginScreen.classList.remove('hidden');
+
             passwordError.classList.add('hidden');
+
             adminPasswordInput.value = '';
+
             vipFormError.classList.add('hidden');
+
             vipNameInput.value = '';
+
             vipEmailInput.value = '';
+
+            vipPhoneInput.value = '';
+
             vipCompanyInput.value = '';
+
         }
+
+
 
         // --- Admin & Data Logic ---
+
         function handleAdminLogin() {
+
             if (adminPasswordInput.value === 'megazone') {
+
                 displayAdminHistory();
+
             } else {
+
                 passwordError.classList.remove('hidden');
+
             }
+
         }
+
         
+
         function displayAdminHistory() {
+
             adminLoginScreen.classList.add('hidden');
+
             adminHistoryScreen.classList.remove('hidden');
+
             const history = JSON.parse(localStorage.getItem('megazoneGameHistory')) || [];
+
             historyTableBody.innerHTML = '';
+
             if (history.length === 0) {
-                historyTableBody.innerHTML = '<tr><td colspan="5" class="text-center p-8">No game history found.</td></tr>';
+
+                historyTableBody.innerHTML = '<tr><td colspan="6" class="text-center p-8">No game history found.</td></tr>';
+
                 return;
+
             }
+
             history.forEach(player => {
+
                 const row = document.createElement('tr');
+
                 if (player.status === 'VIP') {
+
                     row.classList.add('vip-record');
+
                 }
-                row.innerHTML = `<td>${player.name}</td><td>${player.email}</td><td>${player.company}</td><td>${player.status === 'VIP' ? '⭐ VIP' : `${player.score} / ${TOTAL_QUESTIONS}`}</td><td>${player.prize}</td>`;
+
+                row.innerHTML = `<td>${player.name}</td><td>${player.email}</td><td>${player.phone || ''}</td><td>${player.company}</td><td>${player.status === 'VIP' ? '⭐ VIP' : `${player.score} / ${TOTAL_QUESTIONS}`}</td><td>${player.prize}</td>`;
+
                 historyTableBody.appendChild(row);
+
             });
+
         }
+
         
+
         function showConfirm(message, callback) {
+
             confirmMessage.textContent = message;
+
             confirmCallback = callback;
+
             confirmModal.classList.remove('hidden');
+
         }
+
         
+
         function saveGameResult(data) {
+
             const history = JSON.parse(localStorage.getItem('megazoneGameHistory')) || [];
+
             history.push(data);
+
             localStorage.setItem('megazoneGameHistory', JSON.stringify(history));
+
         }
+
+
 
         function awardVipPrize() {
+
             const name = vipNameInput.value.trim();
+
             const email = vipEmailInput.value.trim();
+
+            const phone = vipPhoneInput.value.trim();
+
             const company = vipCompanyInput.value.trim();
+
             const prize = vipPrizeSelect.value;
 
-            if (!name || !email || !company) {
+
+
+            if (!name || !email || !company || !phone) {
+
                 vipFormError.classList.remove('hidden');
+
                 return;
+
             }
+
             vipFormError.classList.add('hidden');
 
+
+
             saveGameResult({
-                name, email, company, prize, status: 'VIP'
+
+                name, email, phone, company, prize, status: 'VIP'
+
             });
+
             
-            alert(`VIP prize awarded to ${name}!`);
+
+            alert(`VIP prize for ${name} has been recorded!`);
+
             vipNameInput.value = '';
+
             vipEmailInput.value = '';
+
+            vipPhoneInput.value = '';
+
             vipCompanyInput.value = '';
+
         }
+
+
 
         function exportToCsv() {
+
             const history = JSON.parse(localStorage.getItem('megazoneGameHistory')) || [];
+
             if (history.length === 0) {
+
                 alert("No history to export.");
+
                 return;
+
             }
 
-            const headers = ['Name', 'Email', 'Company', 'Score/Status', 'Prize'];
-            // Sanitize and format data for CSV
+
+
+            const headers = ['Name', 'Email', 'Phone', 'Company', 'Score/Status', 'Prize'];
+
             const sanitize = (value) => {
+
                 if (value === undefined || value === null) return '';
+
                 let str = String(value);
-                // If the string contains a comma, double quote, or newline, wrap it in double quotes.
+
                 if (str.search(/("|,|\n)/g) >= 0) {
+
                     str = '"' + str.replace(/"/g, '""') + '"';
+
                 }
+
                 return str;
+
             };
 
+
+
             const csvRows = [headers.join(',')];
+
             history.forEach(player => {
+
                 const scoreStatus = player.status === 'VIP' ? 'VIP' : `${player.score}/${TOTAL_QUESTIONS}`;
+
                 const row = [
+
                     sanitize(player.name),
+
                     sanitize(player.email),
+
+                    sanitize(player.phone || ''),
+
                     sanitize(player.company),
+
                     scoreStatus,
+
                     sanitize(player.prize)
+
                 ];
+
                 csvRows.push(row.join(','));
+
             });
+
+
 
             const csvString = csvRows.join('\n');
+
             const blob = new Blob([csvString], { type: 'text/csv;charset=utf-8;' });
+
             
+
             const link = document.createElement("a");
+
             if (link.download !== undefined) {
+
                 const url = URL.createObjectURL(blob);
+
                 link.setAttribute("href", url);
+
                 link.setAttribute("download", "megazone_game_history.csv");
+
                 link.style.visibility = 'hidden';
+
                 document.body.appendChild(link);
+
                 link.click();
+
                 document.body.removeChild(link);
+
             }
+
         }
+
+
 
         // --- Question Data ---
+
         function getFixedQuestions() {
+
             return [
+
                 {
+
                     "question": "What does Megazone AIR do beyond AI readiness?",
+
                     "options": ["Only assists in setting up hardware", "Creates a core capability for sustainable AI innovation", "Focuses on marketing only", "Develops mobile applications"],
+
                     "answer": "Creates a core capability for sustainable AI innovation"
+
                 },
+
                 {
+
                     "question": "How does Megazone AIR support AI Native transformation?",
+
                     "options": ["By forcing manual data entry", "Acting as a practical partner from vision to execution", "Offering only short-term trials", "Limiting AI to a single department"],
+
                     "answer": "Acting as a practical partner from vision to execution"
+
                 },
+
                 {
+
                     "question": "What ensures trustworthiness of AI-generated answers in AIR Studio?",
+
                     "options": ["Random guessing", "Showing data source references and managing RAG", "Relying on user opinions", "No verification methods"],
+
                     "answer": "Showing data source references and managing RAG"
+
                 },
+
                 {
+
                     "question": "What is a current trend in generative AI?",
+
                     "options": ["Using AI to generate creative content and automate workflows", "Avoiding AI in creative industries", "Only using AI for data storage", "Restricting AI to small datasets"],
+
                     "answer": "Using AI to generate creative content and automate workflows"
+
                 },
+
                 {
+
                     "question": "What is AWS’s service for natural language processing and AI chatbots?",
+
                     "options": ["Amazon Polly", "Amazon Lex", "Amazon Aurora", "AWS Elastic Beanstalk"],
+
                     "answer": "Amazon Lex"
+
                 }
+
             ];
+
         }
+
+
 
         // --- Game Logic ---
+
         function startGame() {
+
             const name = playerNameInput.value.trim();
+
             const email = playerEmailInput.value.trim();
+
+            const phone = playerPhoneInput.value.trim();
+
             const company = playerCompanyInput.value.trim();
 
-            if (!name || !email || !company) {
+
+
+            if (!name || !email || !company || !phone) {
+
                 formError.classList.remove('hidden');
+
                 return;
+
             }
+
             formError.classList.add('hidden');
-            currentPlayer = { name, email, company };
+
+            currentPlayer = { name, email, phone, company };
+
+
 
             questions = getFixedQuestions();
+
             currentQuestionIndex = 0;
+
             score = 0;
+
             scoreEl.textContent = score;
+
             
+
             welcomeScreen.classList.add('hidden');
+
             gameScreen.classList.remove('hidden');
+
             endScreen.classList.add('hidden');
 
+
+
             showNextQuestion();
+
         }
+
+
 
         function showNextQuestion() {
+
             if (currentQuestionIndex >= TOTAL_QUESTIONS) {
+
                 endGame();
+
                 return;
+
             }
+
             resetQuestionUI();
+
             const question = questions[currentQuestionIndex];
+
             questionNumberEl.textContent = currentQuestionIndex + 1;
+
             questionTextEl.textContent = question.question;
+
             
+
             const shuffledOptions = [...question.options].sort(() => Math.random() - 0.5);
+
             shuffledOptions.forEach(option => {
+
                 const button = document.createElement('button');
+
                 button.textContent = option;
+
                 button.classList.add('btn-option', 'w-full', 'p-4', 'text-lg', 'font-semibold', 'text-left', 'bg-gray-800', 'rounded-lg', 'border-2', 'border-gray-700', 'hover:bg-slate-800');
+
                 button.addEventListener('click', () => selectAnswer(button, option, question.answer));
+
                 optionsContainer.appendChild(button);
+
             });
+
         }
+
+
 
         function selectAnswer(button, selectedOption, correctAnswer) {
+
             disableOptions();
+
             nextQuestionBtn.classList.remove('hidden');
+
             if (selectedOption === correctAnswer) {
+
                 score++;
+
                 scoreEl.textContent = score;
+
                 button.classList.add('correct');
+
             } else {
+
                 button.classList.add('incorrect');
+
                 const correctButton = Array.from(optionsContainer.children).find(btn => btn.textContent === correctAnswer);
+
                 if (correctButton) correctButton.classList.add('correct');
+
             }
+
         }
+
+
 
         function endGame() {
+
             gameScreen.classList.add('hidden');
+
             endScreen.classList.remove('hidden');
+
             finalScoreEl.textContent = `${score} / ${TOTAL_QUESTIONS}`;
+
             
+
             let prize;
+
             if (score >= WIN_THRESHOLD) {
-                endTitle.textContent = "Congratulations!";
+
+                winResult.classList.remove('hidden');
+
+                loseResult.classList.add('hidden');
+
                 prize = 'Portable Power Bank';
-                prizeText.innerHTML = `🏆 <span class="text-emerald-400">${prize}</span>`;
+
             } else {
-                endTitle.textContent = "Great Effort!";
-                prize = 'Canvas Bag';
-                prizeText.innerHTML = `🎁 <span class="text-amber-400">${prize}</span>`;
+
+                winResult.classList.add('hidden');
+
+                loseResult.classList.remove('hidden');
+
+                prize = 'Participation (Retry Suggested)';
+
             }
+
             saveGameResult({ ...currentPlayer, score, prize, status: 'Player' });
-        }
-        
-        // --- UI Helper Functions ---
-        function resetQuestionUI() {
-            optionsContainer.innerHTML = '';
-            nextQuestionBtn.classList.add('hidden');
-            Array.from(optionsContainer.children).forEach(btn => btn.disabled = false);
+
         }
 
-        function disableOptions() {
-            Array.from(optionsContainer.children).forEach(button => {
-                button.disabled = true;
-                button.style.cursor = 'not-allowed';
-            });
+        
+
+        // --- UI Helper Functions ---
+
+        function resetQuestionUI() {
+
+            optionsContainer.innerHTML = '';
+
+            nextQuestionBtn.classList.add('hidden');
+
         }
+
+
+
+        function disableOptions() {
+
+            Array.from(optionsContainer.children).forEach(button => {
+
+                button.disabled = true;
+
+                button.style.cursor = 'not-allowed';
+
+            });
+
+        }
+
     </script>
+
 </body>
+
 </html>
+
